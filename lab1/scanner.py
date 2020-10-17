@@ -1,35 +1,59 @@
-# ------------------------------------------------------------
-# calclex.py
-#
-# tokenizer for a simple expression evaluator for
-# numbers and +,-,*,/
-# ------------------------------------------------------------
 import ply.lex as lex
 
 # List of token names.   This is always required
-tokens = (
-    'NUMBER',
-    'PLUS',
-    'MINUS',
-    'TIMES',
-    'DIVIDE',
-    'DOTADD',
-    'DOTSUB',
-    'DOTMUL',
-    'DOTDIV',
-    'ADDASSIGN',
-    'SUBASSIGN',
-    'MULASSIGN',
-    'DIVASSIGN',
-    'LPAREN',
-    'RPAREN',
-)
+tokens = [
+    "DOTADD",
+    "DOTSUB",
+    "DOTMUL",
+    "DOTDIV",
+    "ADDASSIGN",
+    "SUBASSIGN",
+    "MULASSIGN",
+    "DIVASSIGN",
+    "LT",
+    "GT",
+    "LE",
+    "GE",
+    "NEQ",
+    "EQ",
+    "ID",
+    "INT",
+    "FLOAT",
+    "STRING"
+]
 
-# binary operators
-t_PLUS = r'\+'
-t_MINUS = r'-'
-t_TIMES = r'\*'
-t_DIVIDE = r'/'
+# key words
+reserved = {
+    'break': 'BREAK',
+    'continue': 'CONTINUE',
+    'if': "IF",
+    'else': "ELSE",
+    'for': "FOR",
+    'while': "WHILE",
+    'return': "RETURN",
+    'eye': "EYE",
+    'zeros': "ZEROS",
+    'ones': "ONES",
+    'print': "PRINT"
+}
+
+literals = "+-*/=()\{\}[]:',;"
+tokens = tokens + list(reserved.values())
+
+t_ignore = ' \t'
+
+t_ignore_COMMENT = r'\#.*'
+
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
+
+def find_column(input, token):
+    line_start = input.rfind('\n', 0, token.lexpos) + 1
+    return (token.lexpos - line_start) + 1
+
 
 # matrix binary operators
 t_DOTADD = r'\.\+'
@@ -51,18 +75,29 @@ t_GE = r'>='
 t_NEQ = r'!='
 t_EQ = r'=='
 
-# brackets
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_LSQBRACKET = r'\('
-t_ = r'\('
-t_LPAREN = r'\('
-t_LPAREN = r'\('
 
-#spread
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
+# identifiers
+def t_ID(t):
+    r'[a-zA-Z_](\w|_)*'
+    t.type = reserved.get(t.value, "ID")
+    return t
 
+# floats
+def t_FLOAT(t):
+    r'(([1-9][0-9]*|0)\.[0-9]*|\.[0-9]+)(E[0-9]+)?'
+    t.value = float(t.value)
+    return t
+
+
+# Integers
+def t_INT(t):
+    r'[0-9]+'
+    t.value = int(t.value)
+    return t
+
+
+# strings
+t_STRING = r'\".*\"'
 
 
 # Build the lexer
