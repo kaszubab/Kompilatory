@@ -100,5 +100,10 @@ def t_INT(t):
 t_STRING = r'\".*\"'
 
 
+# errors
+def t_error(t):
+    print("error", t.value)
+
+
 # Build the lexer
 lexer = lex.lex()
