@@ -97,7 +97,7 @@ def t_INT(t):
 
 
 # strings
-t_STRING = r'\".*\"'
+t_STRING = r'\"[^\"]*\"'
 
 
 # errors
