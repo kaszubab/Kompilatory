@@ -10,6 +10,7 @@ tokens = [
     "SUBASSIGN",
     "MULASSIGN",
     "DIVASSIGN",
+    "TRANSPOSE",
     "LT",
     "GT",
     "LE",
@@ -37,7 +38,7 @@ reserved = {
     'print': "PRINT"
 }
 
-literals = "+-*/=()\{\}[]:',;"
+literals = "+-*/=()\{\}[]:,;"
 tokens = tokens + list(reserved.values())
 
 t_ignore = ' \t'
@@ -60,6 +61,7 @@ t_DOTADD = r'\.\+'
 t_DOTSUB = r'\.-'
 t_DOTMUL = r'\.\*'
 t_DOTDIV = r'\./'
+t_TRANSPOSE = r'\''
 
 # assignment operators
 t_ADDASSIGN = r'\+='
