@@ -37,7 +37,7 @@ reserved = {
     'print': "PRINT"
 }
 
-literals = "+-*/=()\{\}[]:',;"
+literals = "+-*/=()\{\}[]:,';"
 tokens = tokens + list(reserved.values())
 
 t_ignore = ' \t'
@@ -99,11 +99,11 @@ def t_INT(t):
 # strings
 t_STRING = r'\"[^\"]*\"'
 
-
-# errors
+# Error handling rule
 def t_error(t):
-    print("error", t.value)
-
+    print(f'Invalid character at line {t.lexer.lineno}')
+    print(t.value[:t.value.find('\n')])
+    t.lexer.skip(1)
 
 # Build the lexer
 lexer = lex.lex()
