@@ -14,6 +14,8 @@ precedence = (
     ("left", 'DOTMUL', 'DOTDIV'),
     ('right', 'UMINUS'),
     ('left', "\'"),
+    ("nonassoc", 'IFX'),
+    ("nonassoc", 'ELSE'),
 )
 
 
@@ -50,9 +52,14 @@ def p_instruction(p):
     """
 
 def p_print_instruction(p):
-    """print : PRINT expr ';'
-             | PRINT boolean ';'
-             | PRINT matrix_row ';'
+    """print : PRINT row ';'
+    """
+
+def p_row(p):
+    """row : row ',' expr
+          | row ',' boolean
+          | expr
+          | boolean
     """
 
 def p_control_instruction(p):
@@ -83,7 +90,7 @@ def p_while(p):
     """while : WHILE '(' boolean ')' instruction """
 
 def p_if(p):
-    """if : IF '(' boolean ')' instruction
+    """if : IF '(' boolean ')' instruction %prec IFX
           | IF '(' boolean ')' instruction else
     """
 
