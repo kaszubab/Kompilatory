@@ -58,10 +58,10 @@ Rule 52    expr -> expr + expr
 Rule 53    expr -> expr - expr
 Rule 54    expr -> expr * expr
 Rule 55    expr -> expr / expr
-Rule 56    expr -> ID
-Rule 57    expr -> STRING
-Rule 58    expr -> FLOAT
-Rule 59    expr -> INT
+Rule 56    expr -> INT
+Rule 57    expr -> FLOAT
+Rule 58    expr -> STRING
+Rule 59    expr -> ID
 Rule 60    expr -> EYE ( expr )
 Rule 61    expr -> ZEROS ( expr )
 Rule 62    expr -> ONES ( expr )
@@ -95,13 +95,13 @@ DOTSUB               : 49
 ELSE                 : 29
 EQ                   : 45
 EYE                  : 60
-FLOAT                : 58
+FLOAT                : 57
 FOR                  : 24
 GE                   : 43
 GT                   : 41
-ID                   : 24 37 38 56
+ID                   : 24 37 38 59
 IF                   : 27 28
-INT                  : 59
+INT                  : 56
 LE                   : 42
 LT                   : 40
 MULASSIGN            : 35
@@ -109,7 +109,7 @@ NEQ                  : 44
 ONES                 : 62
 PRINT                : 10
 RETURN               : 23
-STRING               : 57
+STRING               : 58
 SUBASSIGN            : 34
 WHILE                : 26
 ZEROS                : 61
@@ -498,10 +498,10 @@ state 16
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -515,10 +515,10 @@ state 16
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -648,10 +648,10 @@ state 24
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -659,10 +659,10 @@ state 24
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -720,10 +720,10 @@ state 27
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -737,10 +737,10 @@ state 27
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -763,10 +763,10 @@ state 28
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -774,10 +774,10 @@ state 28
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -799,10 +799,10 @@ state 29
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -810,10 +810,10 @@ state 29
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -835,10 +835,10 @@ state 30
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -846,10 +846,10 @@ state 30
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -871,10 +871,10 @@ state 31
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -882,10 +882,10 @@ state 31
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -963,10 +963,10 @@ state 35
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -974,10 +974,10 @@ state 35
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -999,10 +999,10 @@ state 36
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1010,10 +1010,10 @@ state 36
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1023,142 +1023,142 @@ state 36
 
 state 37
 
-    (56) expr -> ID .
+    (56) expr -> INT .
 
-    '               reduce using rule 56 (expr -> ID .)
-    DOTADD          reduce using rule 56 (expr -> ID .)
-    DOTSUB          reduce using rule 56 (expr -> ID .)
-    DOTMUL          reduce using rule 56 (expr -> ID .)
-    DOTDIV          reduce using rule 56 (expr -> ID .)
-    +               reduce using rule 56 (expr -> ID .)
-    -               reduce using rule 56 (expr -> ID .)
-    *               reduce using rule 56 (expr -> ID .)
-    /               reduce using rule 56 (expr -> ID .)
-    LT              reduce using rule 56 (expr -> ID .)
-    GT              reduce using rule 56 (expr -> ID .)
-    LE              reduce using rule 56 (expr -> ID .)
-    GE              reduce using rule 56 (expr -> ID .)
-    NEQ             reduce using rule 56 (expr -> ID .)
-    EQ              reduce using rule 56 (expr -> ID .)
-    ;               reduce using rule 56 (expr -> ID .)
-    ,               reduce using rule 56 (expr -> ID .)
-    )               reduce using rule 56 (expr -> ID .)
-    ]               reduce using rule 56 (expr -> ID .)
-    :               reduce using rule 56 (expr -> ID .)
-    PRINT           reduce using rule 56 (expr -> ID .)
-    {               reduce using rule 56 (expr -> ID .)
-    ID              reduce using rule 56 (expr -> ID .)
-    IF              reduce using rule 56 (expr -> ID .)
-    WHILE           reduce using rule 56 (expr -> ID .)
-    FOR             reduce using rule 56 (expr -> ID .)
-    BREAK           reduce using rule 56 (expr -> ID .)
-    CONTINUE        reduce using rule 56 (expr -> ID .)
-    RETURN          reduce using rule 56 (expr -> ID .)
+    '               reduce using rule 56 (expr -> INT .)
+    DOTADD          reduce using rule 56 (expr -> INT .)
+    DOTSUB          reduce using rule 56 (expr -> INT .)
+    DOTMUL          reduce using rule 56 (expr -> INT .)
+    DOTDIV          reduce using rule 56 (expr -> INT .)
+    +               reduce using rule 56 (expr -> INT .)
+    -               reduce using rule 56 (expr -> INT .)
+    *               reduce using rule 56 (expr -> INT .)
+    /               reduce using rule 56 (expr -> INT .)
+    LT              reduce using rule 56 (expr -> INT .)
+    GT              reduce using rule 56 (expr -> INT .)
+    LE              reduce using rule 56 (expr -> INT .)
+    GE              reduce using rule 56 (expr -> INT .)
+    NEQ             reduce using rule 56 (expr -> INT .)
+    EQ              reduce using rule 56 (expr -> INT .)
+    ;               reduce using rule 56 (expr -> INT .)
+    ,               reduce using rule 56 (expr -> INT .)
+    )               reduce using rule 56 (expr -> INT .)
+    ]               reduce using rule 56 (expr -> INT .)
+    :               reduce using rule 56 (expr -> INT .)
+    PRINT           reduce using rule 56 (expr -> INT .)
+    {               reduce using rule 56 (expr -> INT .)
+    ID              reduce using rule 56 (expr -> INT .)
+    IF              reduce using rule 56 (expr -> INT .)
+    WHILE           reduce using rule 56 (expr -> INT .)
+    FOR             reduce using rule 56 (expr -> INT .)
+    BREAK           reduce using rule 56 (expr -> INT .)
+    CONTINUE        reduce using rule 56 (expr -> INT .)
+    RETURN          reduce using rule 56 (expr -> INT .)
 
 
 state 38
 
-    (57) expr -> STRING .
+    (57) expr -> FLOAT .
 
-    '               reduce using rule 57 (expr -> STRING .)
-    DOTADD          reduce using rule 57 (expr -> STRING .)
-    DOTSUB          reduce using rule 57 (expr -> STRING .)
-    DOTMUL          reduce using rule 57 (expr -> STRING .)
-    DOTDIV          reduce using rule 57 (expr -> STRING .)
-    +               reduce using rule 57 (expr -> STRING .)
-    -               reduce using rule 57 (expr -> STRING .)
-    *               reduce using rule 57 (expr -> STRING .)
-    /               reduce using rule 57 (expr -> STRING .)
-    LT              reduce using rule 57 (expr -> STRING .)
-    GT              reduce using rule 57 (expr -> STRING .)
-    LE              reduce using rule 57 (expr -> STRING .)
-    GE              reduce using rule 57 (expr -> STRING .)
-    NEQ             reduce using rule 57 (expr -> STRING .)
-    EQ              reduce using rule 57 (expr -> STRING .)
-    ;               reduce using rule 57 (expr -> STRING .)
-    ,               reduce using rule 57 (expr -> STRING .)
-    )               reduce using rule 57 (expr -> STRING .)
-    ]               reduce using rule 57 (expr -> STRING .)
-    :               reduce using rule 57 (expr -> STRING .)
-    PRINT           reduce using rule 57 (expr -> STRING .)
-    {               reduce using rule 57 (expr -> STRING .)
-    ID              reduce using rule 57 (expr -> STRING .)
-    IF              reduce using rule 57 (expr -> STRING .)
-    WHILE           reduce using rule 57 (expr -> STRING .)
-    FOR             reduce using rule 57 (expr -> STRING .)
-    BREAK           reduce using rule 57 (expr -> STRING .)
-    CONTINUE        reduce using rule 57 (expr -> STRING .)
-    RETURN          reduce using rule 57 (expr -> STRING .)
+    '               reduce using rule 57 (expr -> FLOAT .)
+    DOTADD          reduce using rule 57 (expr -> FLOAT .)
+    DOTSUB          reduce using rule 57 (expr -> FLOAT .)
+    DOTMUL          reduce using rule 57 (expr -> FLOAT .)
+    DOTDIV          reduce using rule 57 (expr -> FLOAT .)
+    +               reduce using rule 57 (expr -> FLOAT .)
+    -               reduce using rule 57 (expr -> FLOAT .)
+    *               reduce using rule 57 (expr -> FLOAT .)
+    /               reduce using rule 57 (expr -> FLOAT .)
+    LT              reduce using rule 57 (expr -> FLOAT .)
+    GT              reduce using rule 57 (expr -> FLOAT .)
+    LE              reduce using rule 57 (expr -> FLOAT .)
+    GE              reduce using rule 57 (expr -> FLOAT .)
+    NEQ             reduce using rule 57 (expr -> FLOAT .)
+    EQ              reduce using rule 57 (expr -> FLOAT .)
+    ;               reduce using rule 57 (expr -> FLOAT .)
+    ,               reduce using rule 57 (expr -> FLOAT .)
+    )               reduce using rule 57 (expr -> FLOAT .)
+    ]               reduce using rule 57 (expr -> FLOAT .)
+    :               reduce using rule 57 (expr -> FLOAT .)
+    PRINT           reduce using rule 57 (expr -> FLOAT .)
+    {               reduce using rule 57 (expr -> FLOAT .)
+    ID              reduce using rule 57 (expr -> FLOAT .)
+    IF              reduce using rule 57 (expr -> FLOAT .)
+    WHILE           reduce using rule 57 (expr -> FLOAT .)
+    FOR             reduce using rule 57 (expr -> FLOAT .)
+    BREAK           reduce using rule 57 (expr -> FLOAT .)
+    CONTINUE        reduce using rule 57 (expr -> FLOAT .)
+    RETURN          reduce using rule 57 (expr -> FLOAT .)
 
 
 state 39
 
-    (58) expr -> FLOAT .
+    (58) expr -> STRING .
 
-    '               reduce using rule 58 (expr -> FLOAT .)
-    DOTADD          reduce using rule 58 (expr -> FLOAT .)
-    DOTSUB          reduce using rule 58 (expr -> FLOAT .)
-    DOTMUL          reduce using rule 58 (expr -> FLOAT .)
-    DOTDIV          reduce using rule 58 (expr -> FLOAT .)
-    +               reduce using rule 58 (expr -> FLOAT .)
-    -               reduce using rule 58 (expr -> FLOAT .)
-    *               reduce using rule 58 (expr -> FLOAT .)
-    /               reduce using rule 58 (expr -> FLOAT .)
-    LT              reduce using rule 58 (expr -> FLOAT .)
-    GT              reduce using rule 58 (expr -> FLOAT .)
-    LE              reduce using rule 58 (expr -> FLOAT .)
-    GE              reduce using rule 58 (expr -> FLOAT .)
-    NEQ             reduce using rule 58 (expr -> FLOAT .)
-    EQ              reduce using rule 58 (expr -> FLOAT .)
-    ;               reduce using rule 58 (expr -> FLOAT .)
-    ,               reduce using rule 58 (expr -> FLOAT .)
-    )               reduce using rule 58 (expr -> FLOAT .)
-    ]               reduce using rule 58 (expr -> FLOAT .)
-    :               reduce using rule 58 (expr -> FLOAT .)
-    PRINT           reduce using rule 58 (expr -> FLOAT .)
-    {               reduce using rule 58 (expr -> FLOAT .)
-    ID              reduce using rule 58 (expr -> FLOAT .)
-    IF              reduce using rule 58 (expr -> FLOAT .)
-    WHILE           reduce using rule 58 (expr -> FLOAT .)
-    FOR             reduce using rule 58 (expr -> FLOAT .)
-    BREAK           reduce using rule 58 (expr -> FLOAT .)
-    CONTINUE        reduce using rule 58 (expr -> FLOAT .)
-    RETURN          reduce using rule 58 (expr -> FLOAT .)
+    '               reduce using rule 58 (expr -> STRING .)
+    DOTADD          reduce using rule 58 (expr -> STRING .)
+    DOTSUB          reduce using rule 58 (expr -> STRING .)
+    DOTMUL          reduce using rule 58 (expr -> STRING .)
+    DOTDIV          reduce using rule 58 (expr -> STRING .)
+    +               reduce using rule 58 (expr -> STRING .)
+    -               reduce using rule 58 (expr -> STRING .)
+    *               reduce using rule 58 (expr -> STRING .)
+    /               reduce using rule 58 (expr -> STRING .)
+    LT              reduce using rule 58 (expr -> STRING .)
+    GT              reduce using rule 58 (expr -> STRING .)
+    LE              reduce using rule 58 (expr -> STRING .)
+    GE              reduce using rule 58 (expr -> STRING .)
+    NEQ             reduce using rule 58 (expr -> STRING .)
+    EQ              reduce using rule 58 (expr -> STRING .)
+    ;               reduce using rule 58 (expr -> STRING .)
+    ,               reduce using rule 58 (expr -> STRING .)
+    )               reduce using rule 58 (expr -> STRING .)
+    ]               reduce using rule 58 (expr -> STRING .)
+    :               reduce using rule 58 (expr -> STRING .)
+    PRINT           reduce using rule 58 (expr -> STRING .)
+    {               reduce using rule 58 (expr -> STRING .)
+    ID              reduce using rule 58 (expr -> STRING .)
+    IF              reduce using rule 58 (expr -> STRING .)
+    WHILE           reduce using rule 58 (expr -> STRING .)
+    FOR             reduce using rule 58 (expr -> STRING .)
+    BREAK           reduce using rule 58 (expr -> STRING .)
+    CONTINUE        reduce using rule 58 (expr -> STRING .)
+    RETURN          reduce using rule 58 (expr -> STRING .)
 
 
 state 40
 
-    (59) expr -> INT .
+    (59) expr -> ID .
 
-    '               reduce using rule 59 (expr -> INT .)
-    DOTADD          reduce using rule 59 (expr -> INT .)
-    DOTSUB          reduce using rule 59 (expr -> INT .)
-    DOTMUL          reduce using rule 59 (expr -> INT .)
-    DOTDIV          reduce using rule 59 (expr -> INT .)
-    +               reduce using rule 59 (expr -> INT .)
-    -               reduce using rule 59 (expr -> INT .)
-    *               reduce using rule 59 (expr -> INT .)
-    /               reduce using rule 59 (expr -> INT .)
-    LT              reduce using rule 59 (expr -> INT .)
-    GT              reduce using rule 59 (expr -> INT .)
-    LE              reduce using rule 59 (expr -> INT .)
-    GE              reduce using rule 59 (expr -> INT .)
-    NEQ             reduce using rule 59 (expr -> INT .)
-    EQ              reduce using rule 59 (expr -> INT .)
-    ;               reduce using rule 59 (expr -> INT .)
-    ,               reduce using rule 59 (expr -> INT .)
-    )               reduce using rule 59 (expr -> INT .)
-    ]               reduce using rule 59 (expr -> INT .)
-    :               reduce using rule 59 (expr -> INT .)
-    PRINT           reduce using rule 59 (expr -> INT .)
-    {               reduce using rule 59 (expr -> INT .)
-    ID              reduce using rule 59 (expr -> INT .)
-    IF              reduce using rule 59 (expr -> INT .)
-    WHILE           reduce using rule 59 (expr -> INT .)
-    FOR             reduce using rule 59 (expr -> INT .)
-    BREAK           reduce using rule 59 (expr -> INT .)
-    CONTINUE        reduce using rule 59 (expr -> INT .)
-    RETURN          reduce using rule 59 (expr -> INT .)
+    '               reduce using rule 59 (expr -> ID .)
+    DOTADD          reduce using rule 59 (expr -> ID .)
+    DOTSUB          reduce using rule 59 (expr -> ID .)
+    DOTMUL          reduce using rule 59 (expr -> ID .)
+    DOTDIV          reduce using rule 59 (expr -> ID .)
+    +               reduce using rule 59 (expr -> ID .)
+    -               reduce using rule 59 (expr -> ID .)
+    *               reduce using rule 59 (expr -> ID .)
+    /               reduce using rule 59 (expr -> ID .)
+    LT              reduce using rule 59 (expr -> ID .)
+    GT              reduce using rule 59 (expr -> ID .)
+    LE              reduce using rule 59 (expr -> ID .)
+    GE              reduce using rule 59 (expr -> ID .)
+    NEQ             reduce using rule 59 (expr -> ID .)
+    EQ              reduce using rule 59 (expr -> ID .)
+    ;               reduce using rule 59 (expr -> ID .)
+    ,               reduce using rule 59 (expr -> ID .)
+    )               reduce using rule 59 (expr -> ID .)
+    ]               reduce using rule 59 (expr -> ID .)
+    :               reduce using rule 59 (expr -> ID .)
+    PRINT           reduce using rule 59 (expr -> ID .)
+    {               reduce using rule 59 (expr -> ID .)
+    ID              reduce using rule 59 (expr -> ID .)
+    IF              reduce using rule 59 (expr -> ID .)
+    WHILE           reduce using rule 59 (expr -> ID .)
+    FOR             reduce using rule 59 (expr -> ID .)
+    BREAK           reduce using rule 59 (expr -> ID .)
+    CONTINUE        reduce using rule 59 (expr -> ID .)
+    RETURN          reduce using rule 59 (expr -> ID .)
 
 
 state 41
@@ -1264,10 +1264,10 @@ state 46
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1275,10 +1275,10 @@ state 46
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1308,10 +1308,10 @@ state 47
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1319,10 +1319,10 @@ state 47
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1351,10 +1351,10 @@ state 48
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1362,10 +1362,10 @@ state 48
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1619,10 +1619,10 @@ state 60
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1636,10 +1636,10 @@ state 60
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1697,10 +1697,10 @@ state 62
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1708,10 +1708,10 @@ state 62
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1733,10 +1733,10 @@ state 63
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1744,10 +1744,10 @@ state 63
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1769,10 +1769,10 @@ state 64
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1780,10 +1780,10 @@ state 64
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1805,10 +1805,10 @@ state 65
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1816,10 +1816,10 @@ state 65
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1841,10 +1841,10 @@ state 66
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1852,10 +1852,10 @@ state 66
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1877,10 +1877,10 @@ state 67
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1888,10 +1888,10 @@ state 67
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1913,10 +1913,10 @@ state 68
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1924,10 +1924,10 @@ state 68
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1949,10 +1949,10 @@ state 69
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1960,10 +1960,10 @@ state 69
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -1985,10 +1985,10 @@ state 70
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -1996,10 +1996,10 @@ state 70
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2021,10 +2021,10 @@ state 71
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2032,10 +2032,10 @@ state 71
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2057,10 +2057,10 @@ state 72
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2068,10 +2068,10 @@ state 72
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2093,10 +2093,10 @@ state 73
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2104,10 +2104,10 @@ state 73
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2129,10 +2129,10 @@ state 74
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2140,10 +2140,10 @@ state 74
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2165,10 +2165,10 @@ state 75
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2176,10 +2176,10 @@ state 75
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2280,10 +2280,10 @@ state 78
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2291,10 +2291,10 @@ state 78
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2316,10 +2316,10 @@ state 79
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2327,10 +2327,10 @@ state 79
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2352,10 +2352,10 @@ state 80
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2363,10 +2363,10 @@ state 80
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2390,10 +2390,10 @@ state 81
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2401,10 +2401,10 @@ state 81
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -2540,10 +2540,10 @@ state 89
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -2551,10 +2551,10 @@ state 89
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -3407,10 +3407,10 @@ state 115
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -3418,10 +3418,10 @@ state 115
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -3746,10 +3746,10 @@ state 124
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -3757,10 +3757,10 @@ state 124
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43
@@ -3868,10 +3868,10 @@ state 129
     (53) expr -> . expr - expr
     (54) expr -> . expr * expr
     (55) expr -> . expr / expr
-    (56) expr -> . ID
-    (57) expr -> . STRING
-    (58) expr -> . FLOAT
-    (59) expr -> . INT
+    (56) expr -> . INT
+    (57) expr -> . FLOAT
+    (58) expr -> . STRING
+    (59) expr -> . ID
     (60) expr -> . EYE ( expr )
     (61) expr -> . ZEROS ( expr )
     (62) expr -> . ONES ( expr )
@@ -3879,10 +3879,10 @@ state 129
 
     (               shift and go to state 35
     -               shift and go to state 36
-    ID              shift and go to state 37
-    STRING          shift and go to state 38
-    FLOAT           shift and go to state 39
-    INT             shift and go to state 40
+    INT             shift and go to state 37
+    FLOAT           shift and go to state 38
+    STRING          shift and go to state 39
+    ID              shift and go to state 40
     EYE             shift and go to state 41
     ZEROS           shift and go to state 42
     ONES            shift and go to state 43

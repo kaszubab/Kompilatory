@@ -3,6 +3,22 @@ class Node(object):
         self.type = "Node"
 
 
+class Instructions(Node):
+    def __init__(self, elem, elements=None):
+        self.elements = []
+        if elements:
+            self.elements = elements.elements
+
+        self.elements.append(elem)
+
+class Row(Node):
+    def __init__(self, elem, elements=None):
+        self.elemetns = []
+        if elements:
+            self.elemetns = elements.elements
+
+        self.elemetns.append(elem)
+
 
 class Print(Node):
     def __init__(self, row):
@@ -101,10 +117,18 @@ class MartixInitalization(Node):
 
 
 class Vector(Node):
-    def __init__(self, elements):
+    def __init__(self, elem, elements = None):
         self.type = "VECTOR"
-        self.elements = elements
+        self.elements = elements if elements else []
+        self.elements.append(elem)
 
+class InnerVector(Node):
+     def __init__(self, elem, elements=None):
+        self.elements = []
+        if elements:
+            self.elements = elements.elements
+
+        self.elements.append(elem)
 
 class IntNum(Node):
     def __init__(self, value):

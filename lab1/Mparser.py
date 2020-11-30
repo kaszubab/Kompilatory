@@ -29,19 +29,23 @@ def p_error(p):
 
 def p_program(p):
     """program : instructions_opt"""
+    p[0] = p[1]
 
 def p_instructions_opt_1(p):
     """instructions_opt : instructions """
+    p[0] = p[1]
 
 def p_instructions_opt_2(p):
     """instructions_opt : """
+    pass
 
 def p_instructions_1(p):
     """instructions : instructions instruction """
-
+    p[0] = Instructions(p[2], p[1])
 
 def p_instructions_2(p):
     """instructions : instruction """
+    p[0] = Instructions(p[1])
 
 def p_instruction(p):
     """instruction : assignment ';'
@@ -49,6 +53,8 @@ def p_instruction(p):
                    | print
                    | block
     """
+    p[0] = p[1]
+
 
 def p_print_instruction(p):
     """print : PRINT row ';'
@@ -61,6 +67,10 @@ def p_row(p):
           | expr
           | boolean
     """
+    if len(p) == 4:
+        p[0] = Row(p[3], p[1])
+    else:
+        p[0] = Row(p[1])
 
 def p_control_instruction(p):
     """control_instruction : if
@@ -70,6 +80,7 @@ def p_control_instruction(p):
                            | continue
                            | return
     """
+    p[0] = p[1]
 
 def p_break_instruction(p):
     """break : BREAK ';'"""
@@ -136,6 +147,7 @@ def p_id_index(p):
 def p_parentheses(p):
     """expr : '(' expr ')'
     """
+    p[0] = p[2]
 
 def p_relational_operators(p):
     """boolean : expr LT expr
@@ -174,11 +186,22 @@ def p_binary_operators(p):
     p[0] = BinExpr(p[2], p[1], p[3])
 
 def p_expr_def(p):
-    """expr : ID
-            | STRING
-            | FLOAT
-            | INT
+    """expr : INT
     """
+    p[0] = IntNum(p[1])
+
+def p_expr_float(p):
+    """expr : FLOAT"""
+    p[0] = FloatNum(p[1])
+
+def p_expr_string(p):
+    """expr : STRING"""
+    p[0] = String(p[1])
+
+def p_expr_id(p):
+    """expr : ID
+    """
+    p[0] = Variable(p[1])
 
 
 def p_matrix(p):
@@ -190,7 +213,7 @@ def p_matrix(p):
     if len(p) == 5:
         p[0] = MartixInitalization(p[1], p[3])
     else:
-        p[0] = Vector([2])
+        p[0] = p[2]
 
 def p_matrix_rows(p):
     """matrix_rows : matrix_rows ',' '[' matrix_row ']'
@@ -199,16 +222,17 @@ def p_matrix_rows(p):
     if len(p) == 4:
         p[0] = Vector(p[2])
     else:
-        p[0] = Vector(p[4])
+        p[0] = Vector(p[4], p[1])
+        
 
 def p_matrix_row(p):
     """matrix_row : matrix_row ',' expr
                    | expr
     """
     if len(p) == 2:
-        p[0] = p[1]
+        p[0] = InnerVector(p[1])
     else:
-        p[0] = p[3]
+        p[0] = InnerVector(p[3], p[1])
 
 
 
