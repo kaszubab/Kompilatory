@@ -13,11 +13,11 @@ class Instructions(Node):
 
 class Row(Node):
     def __init__(self, elem, elements=None):
-        self.elemetns = []
+        self.elements = []
         if elements:
-            self.elemetns = elements.elements
+            self.elements = elements.elements
 
-        self.elemetns.append(elem)
+        self.elements.append(elem)
 
 
 class Print(Node):
@@ -53,7 +53,7 @@ class While(Node):
 class For(Node):
     def __init__(self, variable, _range, body):
         self.type = "FOR"
-        self.variable = variable,
+        self.variable = variable
         self.range = _range
         self.body = body
 
@@ -119,7 +119,7 @@ class MartixInitalization(Node):
 class Vector(Node):
     def __init__(self, elem, elements = None):
         self.type = "VECTOR"
-        self.elements = elements if elements else []
+        self.elements = elements.elements if elements else []
         self.elements.append(elem)
 
 class InnerVector(Node):
@@ -149,6 +149,12 @@ class Variable(Node):
 
 
 class BinExpr(Node):
+    def __init__(self, op, left, right):
+        self.op = op
+        self.left = left
+        self.right = right
+
+class MatrixBinExpr(Node):
     def __init__(self, op, left, right):
         self.op = op
         self.left = left

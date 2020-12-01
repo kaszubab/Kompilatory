@@ -20,7 +20,7 @@ class TreePrinter:
     @addToClass(AST.Instructions)
     def printTree(self, indent=0):
         for e in self.elements:
-            e.printTree(indent+1)
+            e.printTree(indent)
 
     @addToClass(AST.Row)
     def printTree(self, indent=0):
@@ -30,22 +30,20 @@ class TreePrinter:
 
     @addToClass(AST.Print)
     def printTree(self, indent=0):
-        print_with_intend(self.type)
-        for e in self.row:
-            e.printTree(indent+1)
-
+        print_with_intend(self.type, indent)
+        self.row.printTree(indent + 1)
 
     @addToClass(AST.Block)
     def printTree(self, indent=0):
-        for i in self.instructions:
-            i.printTree(indent + 1)
-
+        self.instructions.printTree(indent)
 
     @addToClass(AST.If)
     def printTree(self, indent=0):
         print_with_intend(self.type, indent)
         self.condition.printTree(indent + 1)
+        print_with_intend("THEN", indent)
         self.if_block.printTree(indent + 1)
+        print_with_intend("ELSE", indent)
         self.else_block.printTree(indent + 1)
 
     @addToClass(AST.Else)
@@ -107,14 +105,14 @@ class TreePrinter:
     @addToClass(AST.Transposition)
     def printTree(self, indent=0):
         print_with_intend(self.type, indent)
-        self.matrx.printTree(indent + 1)
+        self.matrix.printTree(indent + 1)
         
 
     @addToClass(AST.Ref)
     def printTree(self, indent=0):
         print_with_intend(self.type, indent)
-        self.id.printTree(indent + 1)
-        self.matrix_row.printTree(indent + 1)
+        print_with_intend(self.id, indent + 1)
+        self.matrix_row.printTree(indent)
 
 
     @addToClass(AST.UnaryMinus)
@@ -136,7 +134,6 @@ class TreePrinter:
         
     @addToClass(AST.InnerVector)
     def printTree(self, indent=0):
-        print_with_intend(self.type, indent)
         for e in self.elements:
             e.printTree(indent + 1)
 
@@ -160,6 +157,12 @@ class TreePrinter:
 
 
     @addToClass(AST.BinExpr)
+    def printTree(self, indent=0):
+        print_with_intend(self.op, indent)
+        self.left.printTree(indent + 1)
+        self.right.printTree(indent + 1)
+    
+    @addToClass(AST.MatrixBinExpr)
     def printTree(self, indent=0):
         print_with_intend(self.op, indent)
         self.left.printTree(indent + 1)

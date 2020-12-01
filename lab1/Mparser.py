@@ -96,7 +96,7 @@ def p_return_instruction(p):
 
 def p_for(p):
     """for : FOR ID '=' range instruction"""
-    p[0] = For(Variable(p[2]), p[3], p[4])
+    p[0] = For(Variable(p[2]), p[4], p[5])
 
 def p_range_operator(p):
     """range : expr ':' expr """
@@ -162,7 +162,7 @@ def p_relational_operators(p):
 def p_matrix_transposition(p):
     """expr : expr "\'"
     """
-    p[0] = Transposition(p[0])
+    p[0] = Transposition(p[1])
 
 
 def p_expr_uminus(p):
@@ -175,7 +175,7 @@ def p_matrix_operators(p):
             | expr DOTMUL expr
             | expr DOTDIV expr
     """
-    p[0] = BinExpr(p[2], p[1], p[3])
+    p[0] = MatrixBinExpr(p[2], p[1], p[3])
 
 def p_binary_operators(p):
     """expr : expr '+' expr
