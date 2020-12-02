@@ -112,7 +112,7 @@ class TreePrinter:
     def printTree(self, indent=0):
         print_with_intend(self.type, indent)
         print_with_intend(self.id, indent + 1)
-        self.matrix_row.printTree(indent)
+        self.matrix_row.printTree(indent + 1)
 
 
     @addToClass(AST.UnaryMinus)
