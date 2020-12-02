@@ -230,9 +230,9 @@ def p_matrix_row(p):
                    | expr
     """
     if len(p) == 2:
-        p[0] = InnerVector(p[1])
+        p[0] = Vector(p[1])
     else:
-        p[0] = InnerVector(p[3], p[1])
+        p[0] = Vector(p[3], p[1])
 
 
 

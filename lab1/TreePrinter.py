@@ -131,11 +131,6 @@ class TreePrinter:
         print_with_intend(self.type, indent)
         for e in self.elements:
             e.printTree(indent + 1)
-        
-    @addToClass(AST.InnerVector)
-    def printTree(self, indent=0):
-        for e in self.elements:
-            e.printTree(indent + 1)
 
     @addToClass(AST.IntNum)
     def printTree(self, indent=0):

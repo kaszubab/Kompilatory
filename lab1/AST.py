@@ -122,14 +122,6 @@ class Vector(Node):
         self.elements = elements.elements if elements else []
         self.elements.append(elem)
 
-class InnerVector(Node):
-     def __init__(self, elem, elements=None):
-        self.elements = []
-        if elements:
-            self.elements = elements.elements
-
-        self.elements.append(elem)
-
 class IntNum(Node):
     def __init__(self, value):
         self.value = value
