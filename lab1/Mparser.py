@@ -7,6 +7,8 @@ tokens = scanner.tokens
 
 precedence = (
     # to fill ...
+    ("nonassoc", 'IFX'),
+    ("nonassoc", 'ELSE'),
     ("left", "LT", "GT", "LE", "GE", "NEQ", "EQ"),
     ("left", '+', '-'),
     ("left", '*', '/'),
@@ -14,8 +16,6 @@ precedence = (
     ("left", 'DOTMUL', 'DOTDIV'),
     ('right', 'UMINUS'),
     ('left', "\'"),
-    ("nonassoc", 'IFX'),
-    ("nonassoc", 'ELSE'),
 )
 
 
