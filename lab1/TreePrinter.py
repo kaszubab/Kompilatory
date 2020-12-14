@@ -46,10 +46,6 @@ class TreePrinter:
         print_with_intend("ELSE", indent)
         self.else_block.printTree(indent + 1)
 
-    @addToClass(AST.Else)
-    def printTree(self, indent=0):
-        self.else_block.printTree(indent)
-
 
     @addToClass(AST.While)
     def printTree(self, indent=0):
@@ -157,13 +153,6 @@ class TreePrinter:
         self.left.printTree(indent + 1)
         self.right.printTree(indent + 1)
     
-    @addToClass(AST.MatrixBinExpr)
-    def printTree(self, indent=0):
-        print_with_intend(self.op, indent)
-        self.left.printTree(indent + 1)
-        self.right.printTree(indent + 1)
-        
-
 
     @addToClass(AST.Error)
     def printTree(self, indent=0):

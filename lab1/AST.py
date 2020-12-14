@@ -40,9 +40,7 @@ class If(Node):
         self.if_block = if_block
         self.else_block = else_block
 
-class Else(Node):
-    def __init__(self, else_block):
-        self.else_block = else_block
+
 
 class While(Node):
     def __init__(self, condition, body):
@@ -80,12 +78,14 @@ class Range(Node):
 
 class Assigment(Node):
     def __init__(self, assigment_type, left, right):
+        self.type = "ASSIGMENT"
         self.assigment_type = assigment_type
         self.left = left
         self.right = right
 
 class Comparsion(Node):
     def __init__(self, operator, left, right):
+        self.type = "COMPARSION"
         self.operator = operator
         self.left = left
         self.right = right
@@ -112,6 +112,7 @@ class UnaryMinus(Node):
 
 class MartixInitalization(Node):
     def __init__(self, function, expresion):
+        self.type = "MATRIX"
         self.function = function
         self.expresion = expresion
 
@@ -125,28 +126,25 @@ class Vector(Node):
 class IntNum(Node):
     def __init__(self, value):
         self.value = value
+        self.type = "INT"
 
 class FloatNum(Node):
     def __init__(self, value):
         self.value = value
+        self.type = "FLOAT"
 
 class String(Node):
     def __init__(self, value):
         self.value = value
-
+        self.type = "STRING"
 
 class Variable(Node):
     def __init__(self, name):
         self.name = name
+        self.type = "ID"
 
 
 class BinExpr(Node):
-    def __init__(self, op, left, right):
-        self.op = op
-        self.left = left
-        self.right = right
-
-class MatrixBinExpr(Node):
     def __init__(self, op, left, right):
         self.op = op
         self.left = left
