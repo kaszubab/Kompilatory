@@ -55,6 +55,8 @@ class TypeChecker(NodeVisitor):
         for elem in node.elements:
             self.visit(elem)
 
+        self.currentScope = self.currentScope.getParentScope()
+
 
     def visit_Row(self, node):
         for elem in node.elements:
@@ -65,7 +67,10 @@ class TypeChecker(NodeVisitor):
             self.visit(elem)
 
     def visit_Block(self, node):
+        new_scope = SymbolTable(self.currentScope, 'block', self.currentScope.scope_level+1)
+        self.currentScope = new_scope
         self.visit(node.instructions)
+        self.currentScope = self.currentScope.getParentScope()
 
     def visit_If(self, node):
         self.visit(node.condition)
@@ -76,9 +81,12 @@ class TypeChecker(NodeVisitor):
         self.currentScope = if_scope
         self.visit(node.if_block)
 
+
         else_scope = SymbolTable(parent_scope, 'else', parent_scope.scope_level+1)
         self.currentScope = else_scope
         self.visit(node.else_block)
+
+        self.currentScope = parent_scope
     
     def visit_While(self, node):
         self.visit(node.condition)
@@ -88,6 +96,8 @@ class TypeChecker(NodeVisitor):
         body_scope = SymbolTable(parent_scope, 'while', parent_scope.scope_level+1)
         self.currentScope = body_scope
         self.visit(node.body)
+
+        self.currentScope = parent_scope
 
     def visit_For(self, node):
         self.visit(node.variable)
@@ -107,6 +117,9 @@ class TypeChecker(NodeVisitor):
         
         self.visit(node.body)
         
+        self.currentScope = parent_scope
+
+
     def visit_Break(self, node):
         if self.currentScope.check_if_in_loop():
             pass
@@ -128,21 +141,25 @@ class TypeChecker(NodeVisitor):
         self.visit(node.begin)
         self.visit(node.end)
 
-        if node.begin.type == "INT":
-            pass
         
         if node.begin.type == "ID":
             begin_var = self.currentScope.get(node.begin.name)
             if begin_var.type != "INTEGER":
                 self.report_error(node.lineno, "Range must begin with integer")
 
-        if node.end.type == "INT":
-            pass
         
         if node.end.type == "ID":
             end_var = self.currentScope.get(node.begin.name)
             if end_var.type != "INTEGER":
                 self.report_error(node.lineno, "Range must end with integer")
+
+
+        if node.begin.type != "ID" and node.begin.type != "INT":
+            self.report_error(node.lineno, "Range must begin with integer")
+
+
+        if node.end.type != "ID" and node.end.type != "INT":
+            self.report_error(node.lineno, "Range must end with integer")
 
 
     def visit_Assigment(self, node):
