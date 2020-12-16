@@ -1,4 +1,5 @@
 from SymbolTable import *
+import AST
 
 
 compatible_types = {
@@ -46,7 +47,7 @@ class TypeChecker(NodeVisitor):
 
     def visit_Instructions(self, node):
         if self.currentScope is None:
-            self.currentScope = SymbolTable(None, 'instructions', '0')
+            self.currentScope = SymbolTable(None, 'instructions', 0)
         
         else:
             new_scope = SymbolTable(self.currentScope, 'instructions', self.currentScope.scope_level+1)
@@ -81,7 +82,6 @@ class TypeChecker(NodeVisitor):
         self.currentScope = if_scope
         self.visit(node.if_block)
 
-
         else_scope = SymbolTable(parent_scope, 'else', parent_scope.scope_level+1)
         self.currentScope = else_scope
         self.visit(node.else_block)
@@ -102,8 +102,6 @@ class TypeChecker(NodeVisitor):
     def visit_For(self, node):
         self.visit(node.variable)
         self.visit(node.range)
-
-        
 
         parent_scope = self.currentScope
 
@@ -138,27 +136,27 @@ class TypeChecker(NodeVisitor):
 
 
     def visit_Range(self, node):
-        self.visit(node.begin)
-        self.visit(node.end)
+        start_type = self.visit(node.begin)
+        end_type = self.visit(node.end)
 
         
-        if node.begin.type == "ID":
+        if start_type == "ID":
             begin_var = self.currentScope.get(node.begin.name)
             if begin_var.type != "INTEGER":
                 self.report_error(node.lineno, "Range must begin with integer")
 
         
-        if node.end.type == "ID":
+        if end_type == "ID":
             end_var = self.currentScope.get(node.begin.name)
             if end_var.type != "INTEGER":
                 self.report_error(node.lineno, "Range must end with integer")
 
 
-        if node.begin.type != "ID" and node.begin.type != "INT":
+        if start_type != "INT":
             self.report_error(node.lineno, "Range must begin with integer")
 
 
-        if node.end.type != "ID" and node.end.type != "INT":
+        if end_type != "INT":
             self.report_error(node.lineno, "Range must end with integer")
 
 
@@ -189,7 +187,7 @@ class TypeChecker(NodeVisitor):
 
 
     def visit_Transposition(self, node):
-        pass
+        self.visit(node.matrix)
 
     
     #TODO przemyśleć czy tu nie trzeba więcej sprawdzać
@@ -213,15 +211,41 @@ class TypeChecker(NodeVisitor):
 
     #TODO 
     def visit_MartixInitalization(self, node):
-        pass
+        if node.function:
+            self.visit(node.function)
+            self.visit(node.expresion)
+        else:
+            parent_scope = self.currentScope
+            matrixInitializerScope = SymbolTable(parent_scope, 'matrix', parent_scope.scope_level + 1)
+            self.currentScope = matrixInitializerScope;
+            self.currentScope.put(MatrixSymbol("matrix", "matrix", -1))
+
+            self.visit(node.expresion)
+            self.currentScope = parent_scope
 
     #TODO
     def visit_Vector(self, node):
-        pass
+        parent_scope = self.currentScope
+        if parent_scope.scope_name == 'matrixInner':
+            if self.currentScope.get("matrix").cols == -1:
+                self.currentScope.get("matrix").cols = len(node.elements)
+            elif self.currentScope.get("matrix").cols != len(node.elements):
+                self.report_error(node.lineno,
+                                  f" Vector length {len(node.elements)} incorrect for the matrix of size {self.currentScope.get('matrix').cols} ")
+        for element in node.elements:
+            if parent_scope.scope_name == 'matrix':
+                matrixInitializerScope = SymbolTable(parent_scope, 'matrixInner', parent_scope.scope_level + 1)
+                self.currentScope = matrixInitializerScope;
+                if element.type != "VECTOR":
+                    self.report_error(node.lineno, f"{node.type} - incorrect type during matrix initialization")
+                self.visit(element)
+            elif parent_scope.scope_name == 'matrixInner':
+                if element.type not in ["FLOAT", "INT"]:
+                    self.report_error(node.lineno, f"{node.type} - incorrect type during matrix initialization")
 
     def visit_IntNum(self, node):
         pass
-    
+
     def visit_FloatNum(self, node):
         pass
 

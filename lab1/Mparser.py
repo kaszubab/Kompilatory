@@ -251,7 +251,7 @@ def p_matrix(p):
         p[0] = MartixInitalization(p[1], p[3])
         p[0].lineno = p.lineno(1)
     else:
-        p[0] = p[2]
+        p[0] = MartixInitalization(None, p[2])
 
 def p_matrix_rows(p):
     """matrix_rows : matrix_rows ',' '[' matrix_row ']'

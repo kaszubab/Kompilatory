@@ -23,7 +23,16 @@ class VariableSymbol(Symbol):
 
     __repr__ = __str__
 
+class MatrixSymbol(Symbol):
+    def __init__(self, name, type, cols):
+        super().__init__(name, type)
+        self.cols = cols
 
+
+    def __str__(self):
+        return self.name + " " + self.type
+
+    __repr__ = __str__
 
 
 class SymbolTable(object):
@@ -32,6 +41,7 @@ class SymbolTable(object):
         self.parent = parent
         self.scope_name = scope_name
         self.scope_level = scope_level
+
         self._symbols = dict()
 
         self._init_buildins()
