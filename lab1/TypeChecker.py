@@ -3,8 +3,8 @@ import AST
 
 
 compatible_types = {
-    "INT": ["INT"],
-    "FLOAT": ["INT", "FLOAT"],
+    "INTEGER": ["INTEGER"],
+    "FLOAT": ["INTEGER", "FLOAT"],
     "STRING": ['STRING']
 }
 
@@ -64,8 +64,7 @@ class TypeChecker(NodeVisitor):
             self.visit(elem)
 
     def visit_Print(self, node):
-        for elem in node.row.elements:
-            self.visit(elem)
+        self.visit(node.row)
 
     def visit_Block(self, node):
         new_scope = SymbolTable(self.currentScope, 'block', self.currentScope.scope_level+1)
@@ -111,7 +110,7 @@ class TypeChecker(NodeVisitor):
         if self.currentScope.get(node.variable.name) != None:
             self.report_error(node.lineno, f"{node.variable.name} has been already declared")
 
-        self.currentScope.put(VariableSymbol(node.variable.name), BuiltinTypeSymbol("INTEGER"))
+        self.currentScope.put(VariableSymbol(node.variable.name, "INTEGER"))
         
         self.visit(node.body)
         
@@ -119,16 +118,12 @@ class TypeChecker(NodeVisitor):
 
 
     def visit_Break(self, node):
-        if self.currentScope.check_if_in_loop():
-            pass
-        else:
+        if not self.currentScope.check_if_in_loop():
             self.report_error(node.lineno, "break outside loop")
 
     
     def visit_Continue(self, node):
-        if self.currentScope.check_if_in_loop():
-            pass
-        else:
+        if not self.currentScope.check_if_in_loop():
             self.report_error(node.lineno, "continue outside loop")
 
     def visit_Return(self, node):
@@ -136,28 +131,45 @@ class TypeChecker(NodeVisitor):
 
 
     def visit_Range(self, node):
-        start_type = self.visit(node.begin)
-        end_type = self.visit(node.end)
+        begin = node.begin
+        end = node.end
 
-        
-        if start_type == "ID":
-            begin_var = self.currentScope.get(node.begin.name)
+        if begin.type != "INTEGER" and begin.type != "ID" and begin.type != '-':
+            self.report_error(node.lineno, "Range must begin with integer")
+
+        if end.type != "INTEGER" and end.type != "ID" and end.type != '-':
+            self.report_error(node.lineno, "Range must end with integer")
+
+        if begin.type == "ID":
+            begin_var = self.currentScope.get(begin.name)
             if begin_var.type != "INTEGER":
                 self.report_error(node.lineno, "Range must begin with integer")
 
-        
-        if end_type == "ID":
-            end_var = self.currentScope.get(node.begin.name)
+        if end.type == "ID":
+            end_var = self.currentScope.get(end.name)
             if end_var.type != "INTEGER":
                 self.report_error(node.lineno, "Range must end with integer")
 
+        if begin.type == '-':
+            if begin.expression.type != "INTEGER" and begin.expression.type != 'ID':
+                self.report_error(node.lineno, "Range must begin with integer")
+            
+            if begin.expression.type == 'ID':
+                begin_var = self.currentScope.get(begin.expression.name)
+                if begin_var.type != "INTEGER":
+                    self.report_error(node.lineno, "Range must begin with integer")
 
-        if start_type != "INT":
-            self.report_error(node.lineno, "Range must begin with integer")
+        if end.type == '-':
+            if end.expression.type != "INTEGER" and end.expression.type != 'ID':
+                self.report_error(node.lineno, "Range must end with integer")
+            
+            if end.expression.type == 'ID':
+                end_var = self.currentScope.get(end.expression.name)
+                if end_var.type != "INTEGER":
+                    self.report_error(node.lineno, "Range must end with integer")
 
-
-        if end_type != "INT":
-            self.report_error(node.lineno, "Range must end with integer")
+        self.visit(node.begin)
+        self.visit(node.end)
 
 
     def visit_Assigment(self, node):
@@ -165,16 +177,17 @@ class TypeChecker(NodeVisitor):
         self.visit(node.right)
 
         if node.left.type == "ID":
-            left_type = self.currentScope.get(node.left.name) 
+            left_var = self.currentScope.get(node.left.name) 
             right_type = node.right.type
-            if left_type is not None:
-                if  not right_type in compatible_types[left_type]:
-                    self.report_error(node.lineno, f"Incompatible types: {left_type}, {right_type}")
+            if left_var is not None:
+                if  not left_var.type == 'VECTOR' and not right_type in compatible_types[left_var.type]:
+                    self.report_error(node.lineno, f"Incompatible types: {left_var}, {right_type}")
+                #TODO co jak jest macierz??
             else:
                 self.currentScope.put(VariableSymbol(node.left.name, node.right.type))
         
         #TODO trzeba sprawdzić czy typ macierzy jest zgodny z tym co po prawej
-        if node.left.type == "REF":
+        elif node.left.type == "REF":
             pass
 
 

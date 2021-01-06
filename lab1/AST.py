@@ -123,7 +123,7 @@ class Vector(Node):
 class IntNum(Node):
     def __init__(self, value):
         self.value = value
-        self.type = "INT"
+        self.type = "INTEGER"
 
 class FloatNum(Node):
     def __init__(self, value):

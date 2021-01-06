@@ -23,6 +23,8 @@ class VariableSymbol(Symbol):
 
     __repr__ = __str__
 
+
+
 class MatrixSymbol(Symbol):
     def __init__(self, name, type, cols):
         super().__init__(name, type)
