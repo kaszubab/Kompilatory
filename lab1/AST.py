@@ -5,10 +5,8 @@ class Node(object):
 
 class Instructions(Node):
     def __init__(self, elem, elements=None):
-        self.elements = []
-        if elements:
-            self.elements = elements.elements
-
+        self.elements = elements.elements if elements else []
+        
         self.elements.append(elem)
 
 class Row(Node):
@@ -110,7 +108,7 @@ class UnaryMinus(Node):
         self.type = "-"
         self.expression = expression
 
-class MartixInitalization(Node):
+class MatrixInitialization(Node):
     def __init__(self, function, expresion):
         self.type = "MATRIX"
         self.function = function
@@ -118,10 +116,9 @@ class MartixInitalization(Node):
 
 
 class Vector(Node):
-    def __init__(self, elem, elements = None):
+    def __init__(self, row):
         self.type = "VECTOR"
-        self.elements = elements.elements if elements else []
-        self.elements.append(elem)
+        self.elements = row.elements
 
 class IntNum(Node):
     def __init__(self, value):

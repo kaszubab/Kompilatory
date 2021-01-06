@@ -25,7 +25,7 @@ class TreePrinter:
     @addToClass(AST.Row)
     def printTree(self, indent=0):
         for e in self.elements:
-            e.printTree(indent+1)
+            e.printTree(indent)
 
 
     @addToClass(AST.Print)
@@ -117,7 +117,7 @@ class TreePrinter:
         self.expresion.printTree(indent + 1)
         
 
-    @addToClass(AST.MartixInitalization)
+    @addToClass(AST.MatrixInitialization)
     def printTree(self, indent=0):
         print_with_intend(self.function, indent)
         self.expresion.printTree(indent + 1)
