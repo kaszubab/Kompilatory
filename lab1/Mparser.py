@@ -248,6 +248,7 @@ def p_vector(p):
     """vector : '[' row ']' 
     """
     p[0] = Vector(p[2])
+    p[0].lineno = p.lineno(1)
 
 
 

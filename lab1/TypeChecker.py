@@ -45,6 +45,47 @@ class TypeChecker(NodeVisitor):
     def report_error(self, lineno, msg):
         print("Found error in line: ", lineno, " error message: \n", msg)
 
+    def get_type(self, node):
+        if node.type == "INTEGER":
+            return Integer()
+        elif node.type == "FLOAT":
+            return Float()
+        elif node.type == "STRING":
+            return String()
+        elif node.type == "VECTOR":
+            return Vector(self.get_type(node.elements[0]))
+        elif node.type == "-":
+            return self.get_type(node.expresion)
+        elif node.type == "TRANSPOSE":
+            return self.get_type(node.matrix)
+        else:
+            self.report_error(node.lineno, "Illegal type")
+            return None
+
+    def check_vector(self, vector):
+        def same_type(elems):
+            first_elem_type = self.get_type(elems[0])
+            for elem in elems[1:]:
+                if self.get_type(elem) != first_elem_type:
+                    return False
+            return True
+        
+        def check_dimensions(elems):
+            first_len = len(elems[0].elements)
+            for elem in elems[1:]:
+                if len(elem.elements) != first_len:
+                    return False
+            
+            return True
+        
+        if not same_type(vector.elements):
+            self.report_error(vector.lineno, "Vector with elements of different types")
+            
+        if vector.elements[0].type == "VECTOR":
+            if not check_dimensions(vector.elements):
+                self.report_error(vector.lineno, "Vector of vectors of different length")
+        
+
     def visit_Instructions(self, node):
         if self.currentScope is None:
             self.currentScope = SymbolTable(None, 'instructions', 0)
@@ -147,7 +188,7 @@ class TypeChecker(NodeVisitor):
 
         if end.type == "ID":
             end_var = self.currentScope.get(end.name)
-            if end_var.type != "INTEGER":
+            if not isinstance(end_var.type, Integer):
                 self.report_error(node.lineno, "Range must end with integer")
 
         if begin.type == '-':
@@ -156,7 +197,7 @@ class TypeChecker(NodeVisitor):
             
             if begin.expression.type == 'ID':
                 begin_var = self.currentScope.get(begin.expression.name)
-                if begin_var.type != "INTEGER":
+                if not isinstance(begin_var.type, Integer):
                     self.report_error(node.lineno, "Range must begin with integer")
 
         if end.type == '-':
@@ -165,7 +206,7 @@ class TypeChecker(NodeVisitor):
             
             if end.expression.type == 'ID':
                 end_var = self.currentScope.get(end.expression.name)
-                if end_var.type != "INTEGER":
+                if not isinstance(end_var.type, Integer):
                     self.report_error(node.lineno, "Range must end with integer")
 
         self.visit(node.begin)
@@ -173,37 +214,45 @@ class TypeChecker(NodeVisitor):
 
 
     def visit_Assigment(self, node):
-        self.visit(node.left)
         self.visit(node.right)
 
         if node.left.type == "ID":
-            left_var = self.currentScope.get(node.left.name) 
-            right_type = node.right.type
-            if left_var is not None:
-                if  not left_var.type == 'VECTOR' and not right_type in compatible_types[left_var.type]:
-                    self.report_error(node.lineno, f"Incompatible types: {left_var}, {right_type}")
-                #TODO co jak jest macierz??
-            else:
-                self.currentScope.put(VariableSymbol(node.left.name, node.right.type))
+            
+            
+            self.currentScope.put(VariableSymbol(node.left.name, self.get_type(node.right)))
         
-        #TODO trzeba sprawdzić czy typ macierzy jest zgodny z tym co po prawej
         elif node.left.type == "REF":
-            pass
+            self.visit(node.left)
+            
+            left_var = self.currentScope.get(node.left.id)
 
+            if not left_var is None and isinstance(left_var.type, Vector):
+                if left_var.type != self.get_type(node.right):
+                    self.report_error(node.lineno, "Can't insert incompatible type into Vector")
 
     def visit_Comparsion(self, node):
         self.visit(node.left)
         self.visit(node.right)
 
-        if not node.right.type in compatible_types[node.left.type]:
-            self.report_error(node.lineno, f"Incompatible types: {node.left.type}, {node.right.type}")
-
+        if node.left.type == "Vector" or node.right.type == "Vector":
+            self.report_error(node.lineno, "Can't compare Vectors")
+        
+        #TODO I have no concpet of checking this
+        
 
     def visit_Transposition(self, node):
         self.visit(node.matrix)
+        
+        if node.matrix.type != "ID" and node.matrix.type != "VECTOR":
+            self.report_error(node.lineno, "Can't transose element")
+        
+        if node.matrix.type == "ID":
+            var = self.currentScope.get(node.matrix.id)
+
+            if var and not isinstance(var.type, Vector):
+                self.report_error(node.lineno, "Can't transpose elemtnet")
 
     
-    #TODO przemyśleć czy tu nie trzeba więcej sprawdzać
     def visit_Ref(self, node):
         self.visit(node.matrix_row)
         
@@ -213,48 +262,30 @@ class TypeChecker(NodeVisitor):
     def visit_UnaryMinus(self, node):
         self.visit(node.expression)
 
-        if node.expression.type not in ['ID', 'INT', 'FLOAT']:
+        if node.expression.type not in ['ID', 'INTTEGER', 'FLOAT']:
             self.report_error(node.lineno, "Unary minus with wrong expression")
         
-        #TODO sprawdzenie, czy dla typu zmiennej można zrobić unary minus
         if node.expresion.type == 'ID':
-            if self.currentScope.get(node.expression.name) is None:
-                self.report_error(node.lineno, f"Unexisting variable {node.expression}")
+            var = self.currentScope.get(node.expression.name)
+            if var:
+                if not isinstance(var.type, (Integer, Float)):
+                    self.report_error(node.lineno, "Can't make unary minus for element")
 
-
-    #TODO 
+    
     def visit_MartixInitalization(self, node):
-        if node.function:
-            self.visit(node.function)
-            self.visit(node.expresion)
-        else:
-            parent_scope = self.currentScope
-            matrixInitializerScope = SymbolTable(parent_scope, 'matrix', parent_scope.scope_level + 1)
-            self.currentScope = matrixInitializerScope;
-            self.currentScope.put(MatrixSymbol("matrix", "matrix", -1))
+        if node.expression.type != "INTEGER" and node.expression.type != "ID":
+            self.report_error(node.lineno, "Matrix initialization only with integer")
+        
+        if node.expression.type == "ID":
+            self.visit(node.expression)
+            var = self.currentScope.get(node.expression.name)
+            if var and not isinstance(var.type, Integer):
+                self.report_error(node.lineno, "Matrix initialization only with integer")
 
-            self.visit(node.expresion)
-            self.currentScope = parent_scope
 
     #TODO
     def visit_Vector(self, node):
-        parent_scope = self.currentScope
-        if parent_scope.scope_name == 'matrixInner':
-            if self.currentScope.get("matrix").cols == -1:
-                self.currentScope.get("matrix").cols = len(node.elements)
-            elif self.currentScope.get("matrix").cols != len(node.elements):
-                self.report_error(node.lineno,
-                                  f" Vector length {len(node.elements)} incorrect for the matrix of size {self.currentScope.get('matrix').cols} ")
-        for element in node.elements:
-            if parent_scope.scope_name == 'matrix':
-                matrixInitializerScope = SymbolTable(parent_scope, 'matrixInner', parent_scope.scope_level + 1)
-                self.currentScope = matrixInitializerScope;
-                if element.type != "VECTOR":
-                    self.report_error(node.lineno, f"{node.type} - incorrect type during matrix initialization")
-                self.visit(element)
-            elif parent_scope.scope_name == 'matrixInner':
-                if element.type not in ["FLOAT", "INT"]:
-                    self.report_error(node.lineno, f"{node.type} - incorrect type during matrix initialization")
+        self.check_vector(node)
 
     def visit_IntNum(self, node):
         pass
@@ -266,17 +297,28 @@ class TypeChecker(NodeVisitor):
         pass
 
     def visit_Variable(self, node):
-        pass
+        if self.currentScope.get(node.name) is None:
+            self.report_error(node.lineno, "Unexisitnig variable")
 
-    #TODO
     def visit_BinExpr(self, node):
                                           # alternative usage,
                                           # requires definition of accept method in class Node
-        type1 = self.visit(node.left)     # type1 = node.left.accept(self) 
-        type2 = self.visit(node.right)    # type2 = node.right.accept(self)
+        self.visit(node.left)     # type1 = node.left.accept(self) 
+        self.visit(node.right)    # type2 = node.right.accept(self)
         op    = node.op
-        # ... 
-        #
- 
 
+
+
+        if not node.left.type == "ID" and not node.left.type == "REF" \
+            and not node.right.type == "ID" and not node.right.type == "REF":
+
+            left_type = self.get_type(node.left)
+            right_type = self.get_type(node.right)
+
+            if op in [".+", ".-", ".*", "./"]:
+                if not isinstance(left_type, Vector) and not isinstance(right_type, Vector):
+                    self.report_error(node.lineno, "Element wise operations only on vectors")
+            
+            if op in ["+", "-", "*", "/"]:
+                pass
 

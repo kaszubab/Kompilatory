@@ -23,6 +23,6 @@ if __name__ == '__main__':
 
     
     ast = parser.parse(text, lexer=scanner.lexer)
-    ast.printTree()
-    #typeChecker = TypeChecker()   
-    #typeChecker.visit(ast)
+    #ast.printTree()
+    typeChecker = TypeChecker()   
+    typeChecker.visit(ast)

@@ -1,3 +1,48 @@
+class Type():
+    pass
+
+class Integer(Type):
+    def __init__(self):
+        self.type_name = "INTEGER"
+
+    def __eq__(self, o):
+        return isinstance(o, Integer)
+    
+    def __ne__(self, o):
+        return not self.__eq__(o)
+
+class Float(Type):
+    def __init__(self):
+        self.type_name = "FLOAT"   
+
+    def __eq__(self, o):
+        return isinstance(o, Float)
+    
+    def __ne__(self, o):
+        return not self.__eq__(o)
+
+class String(Type):
+    def __init__(self):
+        self.type_name = "STRING"
+
+    def __eq__(self, o):
+        return isinstance(o, String)
+    
+    def __ne__(self, o):
+        return not self.__eq__(o)
+
+class Vector(Type):
+    def __init__(self, inner_type):
+        self.type_name = "VECTOR"   
+        self.inner_type = inner_type
+    
+    def __eq__(self, o):
+        return isinstance(o, Vector) and self.inner_type == o.inner_type
+
+    def __ne__(self, o):
+        return not self.__eq__(o) 
+
+
 class Symbol(object):
     def __init__(self, name, type=None):
         self.name = name
