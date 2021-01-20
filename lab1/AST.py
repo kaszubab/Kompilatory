@@ -11,6 +11,7 @@ class Instructions(Node):
 
 class Row(Node):
     def __init__(self, elem, elements=None):
+        self.type = "ROW"
         self.elements = []
         if elements:
             self.elements = elements.elements
@@ -109,10 +110,10 @@ class UnaryMinus(Node):
         self.expression = expression
 
 class MatrixInitialization(Node):
-    def __init__(self, function, expresion):
+    def __init__(self, function, expression):
         self.type = "MATRIX"
         self.function = function
-        self.expresion = expresion
+        self.expression = expression
 
 
 class Vector(Node):
@@ -143,6 +144,7 @@ class Variable(Node):
 
 class BinExpr(Node):
     def __init__(self, op, left, right):
+        self.name = "BINEXPR"
         self.op = op
         self.left = left
         self.right = right

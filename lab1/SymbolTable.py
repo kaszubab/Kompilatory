@@ -31,6 +31,18 @@ class String(Type):
     def __ne__(self, o):
         return not self.__eq__(o)
 
+
+class Matrix(Type):
+    def __init__(self):
+        self.type_name = "MATRIX"
+        self.inne_type = Integer()
+
+    def __eq__(self, o):
+        return isinstance(o, String)
+
+    def __ne__(self, o):
+        return not self.__eq__(o)
+
 class Vector(Type):
     def __init__(self, inner_type):
         self.type_name = "VECTOR"   
@@ -71,13 +83,11 @@ class VariableSymbol(Symbol):
 
 
 class MatrixSymbol(Symbol):
-    def __init__(self, name, type, cols):
+    def __init__(self, name, type):
         super().__init__(name, type)
-        self.cols = cols
-
 
     def __str__(self):
-        return self.name + " " + self.type
+        return self.name + " " + self.type.__str__()
 
     __repr__ = __str__
 
@@ -124,6 +134,6 @@ class SymbolTable(object):
         if self.scope_name in ['for', 'while']:
             return True
         elif self.parent is not None:
-            self.parent.check_if_in_loop()
+            return self.parent.check_if_in_loop()
         else:
             False

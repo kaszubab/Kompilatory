@@ -67,9 +67,9 @@ def p_print_instruction(p):
 
 def p_row(p):
     """row : row ',' expr
-          | row ',' boolean
+          | row ',' range
           | expr
-          | boolean
+          | range
     """
     if len(p) == 4:
         p[0] = Row(p[3], p[1])
@@ -152,7 +152,6 @@ def p_assignment(p):
 
 def p_id_index(p):
     """id_part : ID '[' row ']'
-                | ID '[' range ']'
                 | ID
     """
     if len(p) == 2:
