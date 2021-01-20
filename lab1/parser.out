@@ -62,9 +62,9 @@ Rule 56    expr -> INT
 Rule 57    expr -> FLOAT
 Rule 58    expr -> STRING
 Rule 59    expr -> id_part
-Rule 60    expr -> EYE ( expr )
-Rule 61    expr -> ZEROS ( expr )
-Rule 62    expr -> ONES ( expr )
+Rule 60    expr -> EYE ( row )
+Rule 61    expr -> ZEROS ( row )
+Rule 62    expr -> ONES ( row )
 Rule 63    expr -> vector
 Rule 64    vector -> [ row ]
 
@@ -124,7 +124,7 @@ boolean              : 12 14 26 27 28 31
 break                : 18
 continue             : 19
 control_instruction  : 7
-expr                 : 11 13 23 25 25 30 32 33 34 35 39 40 40 41 41 42 42 43 43 44 44 45 45 46 47 48 48 49 49 50 50 51 51 52 52 53 53 54 54 55 55 60 61 62
+expr                 : 11 13 23 25 25 30 32 33 34 35 39 40 40 41 41 42 42 43 43 44 44 45 45 46 47 48 48 49 49 50 50 51 51 52 52 53 53 54 54 55 55
 for                  : 17
 id_part              : 30 31 32 33 34 35 59
 if                   : 15
@@ -135,7 +135,7 @@ print                : 8
 program              : 0
 range                : 24 37
 return               : 20
-row                  : 10 11 12 36 64
+row                  : 10 11 12 36 60 61 62 64
 vector               : 63
 while                : 16
 
@@ -499,9 +499,9 @@ state 16
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (40) boolean -> . expr LT expr
     (41) boolean -> . expr GT expr
@@ -686,9 +686,9 @@ state 24
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -764,9 +764,9 @@ state 27
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (40) boolean -> . expr LT expr
     (41) boolean -> . expr GT expr
@@ -813,9 +813,9 @@ state 28
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -855,9 +855,9 @@ state 29
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -897,9 +897,9 @@ state 30
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -939,9 +939,9 @@ state 31
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -995,6 +995,7 @@ state 33
     ;               reduce using rule 13 (row -> expr .)
     ,               reduce using rule 13 (row -> expr .)
     ]               reduce using rule 13 (row -> expr .)
+    )               reduce using rule 13 (row -> expr .)
     '               shift and go to state 62
     +               shift and go to state 63
     -               shift and go to state 64
@@ -1019,6 +1020,7 @@ state 34
     ;               reduce using rule 14 (row -> boolean .)
     ,               reduce using rule 14 (row -> boolean .)
     ]               reduce using rule 14 (row -> boolean .)
+    )               reduce using rule 14 (row -> boolean .)
 
 
 state 35
@@ -1039,9 +1041,9 @@ state 35
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -1081,9 +1083,9 @@ state 36
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -1247,21 +1249,21 @@ state 40
 
 state 41
 
-    (60) expr -> EYE . ( expr )
+    (60) expr -> EYE . ( row )
 
     (               shift and go to state 79
 
 
 state 42
 
-    (61) expr -> ZEROS . ( expr )
+    (61) expr -> ZEROS . ( row )
 
     (               shift and go to state 80
 
 
 state 43
 
-    (62) expr -> ONES . ( expr )
+    (62) expr -> ONES . ( row )
 
     (               shift and go to state 81
 
@@ -1323,9 +1325,9 @@ state 45
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (40) boolean -> . expr LT expr
     (41) boolean -> . expr GT expr
@@ -1436,9 +1438,9 @@ state 47
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (40) boolean -> . expr LT expr
     (41) boolean -> . expr GT expr
@@ -1494,9 +1496,9 @@ state 48
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -1543,9 +1545,9 @@ state 49
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -1817,9 +1819,9 @@ state 61
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (40) boolean -> . expr LT expr
     (41) boolean -> . expr GT expr
@@ -1901,9 +1903,9 @@ state 63
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -1943,9 +1945,9 @@ state 64
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -1985,9 +1987,9 @@ state 65
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2027,9 +2029,9 @@ state 66
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2069,9 +2071,9 @@ state 67
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2111,9 +2113,9 @@ state 68
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2153,9 +2155,9 @@ state 69
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2195,9 +2197,9 @@ state 70
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2237,9 +2239,9 @@ state 71
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2279,9 +2281,9 @@ state 72
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2321,9 +2323,9 @@ state 73
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2363,9 +2365,9 @@ state 74
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2405,9 +2407,9 @@ state 75
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2447,9 +2449,9 @@ state 76
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2552,7 +2554,11 @@ state 78
 
 state 79
 
-    (60) expr -> EYE ( . expr )
+    (60) expr -> EYE ( . row )
+    (11) row -> . row , expr
+    (12) row -> . row , boolean
+    (13) row -> . expr
+    (14) row -> . boolean
     (39) expr -> . ( expr )
     (46) expr -> . expr '
     (47) expr -> . - expr
@@ -2568,10 +2574,16 @@ state 79
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
+    (40) boolean -> . expr LT expr
+    (41) boolean -> . expr GT expr
+    (42) boolean -> . expr LE expr
+    (43) boolean -> . expr GE expr
+    (44) boolean -> . expr NEQ expr
+    (45) boolean -> . expr EQ expr
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
     (38) id_part -> . ID
@@ -2588,13 +2600,19 @@ state 79
     ID              shift and go to state 18
     [               shift and go to state 45
 
-    expr                           shift and go to state 109
+    row                            shift and go to state 109
+    expr                           shift and go to state 33
+    boolean                        shift and go to state 34
     id_part                        shift and go to state 40
     vector                         shift and go to state 44
 
 state 80
 
-    (61) expr -> ZEROS ( . expr )
+    (61) expr -> ZEROS ( . row )
+    (11) row -> . row , expr
+    (12) row -> . row , boolean
+    (13) row -> . expr
+    (14) row -> . boolean
     (39) expr -> . ( expr )
     (46) expr -> . expr '
     (47) expr -> . - expr
@@ -2610,10 +2628,16 @@ state 80
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
+    (40) boolean -> . expr LT expr
+    (41) boolean -> . expr GT expr
+    (42) boolean -> . expr LE expr
+    (43) boolean -> . expr GE expr
+    (44) boolean -> . expr NEQ expr
+    (45) boolean -> . expr EQ expr
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
     (38) id_part -> . ID
@@ -2630,13 +2654,19 @@ state 80
     ID              shift and go to state 18
     [               shift and go to state 45
 
-    expr                           shift and go to state 110
+    row                            shift and go to state 110
+    expr                           shift and go to state 33
+    boolean                        shift and go to state 34
     id_part                        shift and go to state 40
     vector                         shift and go to state 44
 
 state 81
 
-    (62) expr -> ONES ( . expr )
+    (62) expr -> ONES ( . row )
+    (11) row -> . row , expr
+    (12) row -> . row , boolean
+    (13) row -> . expr
+    (14) row -> . boolean
     (39) expr -> . ( expr )
     (46) expr -> . expr '
     (47) expr -> . - expr
@@ -2652,10 +2682,16 @@ state 81
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
+    (40) boolean -> . expr LT expr
+    (41) boolean -> . expr GT expr
+    (42) boolean -> . expr LE expr
+    (43) boolean -> . expr GE expr
+    (44) boolean -> . expr NEQ expr
+    (45) boolean -> . expr EQ expr
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
     (38) id_part -> . ID
@@ -2672,7 +2708,9 @@ state 81
     ID              shift and go to state 18
     [               shift and go to state 45
 
-    expr                           shift and go to state 111
+    row                            shift and go to state 111
+    expr                           shift and go to state 33
+    boolean                        shift and go to state 34
     id_part                        shift and go to state 40
     vector                         shift and go to state 44
 
@@ -2830,9 +2868,9 @@ state 90
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -2895,6 +2933,7 @@ state 92
     ;               reduce using rule 11 (row -> row , expr .)
     ,               reduce using rule 11 (row -> row , expr .)
     ]               reduce using rule 11 (row -> row , expr .)
+    )               reduce using rule 11 (row -> row , expr .)
     '               shift and go to state 62
     +               shift and go to state 63
     -               shift and go to state 64
@@ -2919,6 +2958,7 @@ state 93
     ;               reduce using rule 12 (row -> row , boolean .)
     ,               reduce using rule 12 (row -> row , boolean .)
     ]               reduce using rule 12 (row -> row , boolean .)
+    )               reduce using rule 12 (row -> row , boolean .)
 
 
 state 94
@@ -3558,77 +3598,32 @@ state 108
 
 state 109
 
-    (60) expr -> EYE ( expr . )
-    (46) expr -> expr . '
-    (48) expr -> expr . + expr
-    (49) expr -> expr . - expr
-    (50) expr -> expr . * expr
-    (51) expr -> expr . / expr
-    (52) expr -> expr . DOTADD expr
-    (53) expr -> expr . DOTSUB expr
-    (54) expr -> expr . DOTMUL expr
-    (55) expr -> expr . DOTDIV expr
+    (60) expr -> EYE ( row . )
+    (11) row -> row . , expr
+    (12) row -> row . , boolean
 
     )               shift and go to state 120
-    '               shift and go to state 62
-    +               shift and go to state 63
-    -               shift and go to state 64
-    *               shift and go to state 65
-    /               shift and go to state 66
-    DOTADD          shift and go to state 67
-    DOTSUB          shift and go to state 68
-    DOTMUL          shift and go to state 69
-    DOTDIV          shift and go to state 70
+    ,               shift and go to state 61
 
 
 state 110
 
-    (61) expr -> ZEROS ( expr . )
-    (46) expr -> expr . '
-    (48) expr -> expr . + expr
-    (49) expr -> expr . - expr
-    (50) expr -> expr . * expr
-    (51) expr -> expr . / expr
-    (52) expr -> expr . DOTADD expr
-    (53) expr -> expr . DOTSUB expr
-    (54) expr -> expr . DOTMUL expr
-    (55) expr -> expr . DOTDIV expr
+    (61) expr -> ZEROS ( row . )
+    (11) row -> row . , expr
+    (12) row -> row . , boolean
 
     )               shift and go to state 121
-    '               shift and go to state 62
-    +               shift and go to state 63
-    -               shift and go to state 64
-    *               shift and go to state 65
-    /               shift and go to state 66
-    DOTADD          shift and go to state 67
-    DOTSUB          shift and go to state 68
-    DOTMUL          shift and go to state 69
-    DOTDIV          shift and go to state 70
+    ,               shift and go to state 61
 
 
 state 111
 
-    (62) expr -> ONES ( expr . )
-    (46) expr -> expr . '
-    (48) expr -> expr . + expr
-    (49) expr -> expr . - expr
-    (50) expr -> expr . * expr
-    (51) expr -> expr . / expr
-    (52) expr -> expr . DOTADD expr
-    (53) expr -> expr . DOTSUB expr
-    (54) expr -> expr . DOTMUL expr
-    (55) expr -> expr . DOTDIV expr
+    (62) expr -> ONES ( row . )
+    (11) row -> row . , expr
+    (12) row -> row . , boolean
 
     )               shift and go to state 122
-    '               shift and go to state 62
-    +               shift and go to state 63
-    -               shift and go to state 64
-    *               shift and go to state 65
-    /               shift and go to state 66
-    DOTADD          shift and go to state 67
-    DOTSUB          shift and go to state 68
-    DOTMUL          shift and go to state 69
-    DOTDIV          shift and go to state 70
+    ,               shift and go to state 61
 
 
 state 112
@@ -3764,9 +3759,9 @@ state 115
     (57) expr -> . FLOAT
     (58) expr -> . STRING
     (59) expr -> . id_part
-    (60) expr -> . EYE ( expr )
-    (61) expr -> . ZEROS ( expr )
-    (62) expr -> . ONES ( expr )
+    (60) expr -> . EYE ( row )
+    (61) expr -> . ZEROS ( row )
+    (62) expr -> . ONES ( row )
     (63) expr -> . vector
     (36) id_part -> . ID [ row ]
     (37) id_part -> . ID [ range ]
@@ -3981,107 +3976,107 @@ state 119
 
 state 120
 
-    (60) expr -> EYE ( expr ) .
+    (60) expr -> EYE ( row ) .
 
-    '               reduce using rule 60 (expr -> EYE ( expr ) .)
-    +               reduce using rule 60 (expr -> EYE ( expr ) .)
-    -               reduce using rule 60 (expr -> EYE ( expr ) .)
-    *               reduce using rule 60 (expr -> EYE ( expr ) .)
-    /               reduce using rule 60 (expr -> EYE ( expr ) .)
-    DOTADD          reduce using rule 60 (expr -> EYE ( expr ) .)
-    DOTSUB          reduce using rule 60 (expr -> EYE ( expr ) .)
-    DOTMUL          reduce using rule 60 (expr -> EYE ( expr ) .)
-    DOTDIV          reduce using rule 60 (expr -> EYE ( expr ) .)
-    LT              reduce using rule 60 (expr -> EYE ( expr ) .)
-    GT              reduce using rule 60 (expr -> EYE ( expr ) .)
-    LE              reduce using rule 60 (expr -> EYE ( expr ) .)
-    GE              reduce using rule 60 (expr -> EYE ( expr ) .)
-    NEQ             reduce using rule 60 (expr -> EYE ( expr ) .)
-    EQ              reduce using rule 60 (expr -> EYE ( expr ) .)
-    ;               reduce using rule 60 (expr -> EYE ( expr ) .)
-    ,               reduce using rule 60 (expr -> EYE ( expr ) .)
-    )               reduce using rule 60 (expr -> EYE ( expr ) .)
-    ]               reduce using rule 60 (expr -> EYE ( expr ) .)
-    :               reduce using rule 60 (expr -> EYE ( expr ) .)
-    PRINT           reduce using rule 60 (expr -> EYE ( expr ) .)
-    {               reduce using rule 60 (expr -> EYE ( expr ) .)
-    ID              reduce using rule 60 (expr -> EYE ( expr ) .)
-    IF              reduce using rule 60 (expr -> EYE ( expr ) .)
-    WHILE           reduce using rule 60 (expr -> EYE ( expr ) .)
-    FOR             reduce using rule 60 (expr -> EYE ( expr ) .)
-    BREAK           reduce using rule 60 (expr -> EYE ( expr ) .)
-    CONTINUE        reduce using rule 60 (expr -> EYE ( expr ) .)
-    RETURN          reduce using rule 60 (expr -> EYE ( expr ) .)
+    '               reduce using rule 60 (expr -> EYE ( row ) .)
+    +               reduce using rule 60 (expr -> EYE ( row ) .)
+    -               reduce using rule 60 (expr -> EYE ( row ) .)
+    *               reduce using rule 60 (expr -> EYE ( row ) .)
+    /               reduce using rule 60 (expr -> EYE ( row ) .)
+    DOTADD          reduce using rule 60 (expr -> EYE ( row ) .)
+    DOTSUB          reduce using rule 60 (expr -> EYE ( row ) .)
+    DOTMUL          reduce using rule 60 (expr -> EYE ( row ) .)
+    DOTDIV          reduce using rule 60 (expr -> EYE ( row ) .)
+    LT              reduce using rule 60 (expr -> EYE ( row ) .)
+    GT              reduce using rule 60 (expr -> EYE ( row ) .)
+    LE              reduce using rule 60 (expr -> EYE ( row ) .)
+    GE              reduce using rule 60 (expr -> EYE ( row ) .)
+    NEQ             reduce using rule 60 (expr -> EYE ( row ) .)
+    EQ              reduce using rule 60 (expr -> EYE ( row ) .)
+    ;               reduce using rule 60 (expr -> EYE ( row ) .)
+    ,               reduce using rule 60 (expr -> EYE ( row ) .)
+    )               reduce using rule 60 (expr -> EYE ( row ) .)
+    ]               reduce using rule 60 (expr -> EYE ( row ) .)
+    :               reduce using rule 60 (expr -> EYE ( row ) .)
+    PRINT           reduce using rule 60 (expr -> EYE ( row ) .)
+    {               reduce using rule 60 (expr -> EYE ( row ) .)
+    ID              reduce using rule 60 (expr -> EYE ( row ) .)
+    IF              reduce using rule 60 (expr -> EYE ( row ) .)
+    WHILE           reduce using rule 60 (expr -> EYE ( row ) .)
+    FOR             reduce using rule 60 (expr -> EYE ( row ) .)
+    BREAK           reduce using rule 60 (expr -> EYE ( row ) .)
+    CONTINUE        reduce using rule 60 (expr -> EYE ( row ) .)
+    RETURN          reduce using rule 60 (expr -> EYE ( row ) .)
 
 
 state 121
 
-    (61) expr -> ZEROS ( expr ) .
+    (61) expr -> ZEROS ( row ) .
 
-    '               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    +               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    -               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    *               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    /               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    DOTADD          reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    DOTSUB          reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    DOTMUL          reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    DOTDIV          reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    LT              reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    GT              reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    LE              reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    GE              reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    NEQ             reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    EQ              reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    ;               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    ,               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    )               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    ]               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    :               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    PRINT           reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    {               reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    ID              reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    IF              reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    WHILE           reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    FOR             reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    BREAK           reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    CONTINUE        reduce using rule 61 (expr -> ZEROS ( expr ) .)
-    RETURN          reduce using rule 61 (expr -> ZEROS ( expr ) .)
+    '               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    +               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    -               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    *               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    /               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    DOTADD          reduce using rule 61 (expr -> ZEROS ( row ) .)
+    DOTSUB          reduce using rule 61 (expr -> ZEROS ( row ) .)
+    DOTMUL          reduce using rule 61 (expr -> ZEROS ( row ) .)
+    DOTDIV          reduce using rule 61 (expr -> ZEROS ( row ) .)
+    LT              reduce using rule 61 (expr -> ZEROS ( row ) .)
+    GT              reduce using rule 61 (expr -> ZEROS ( row ) .)
+    LE              reduce using rule 61 (expr -> ZEROS ( row ) .)
+    GE              reduce using rule 61 (expr -> ZEROS ( row ) .)
+    NEQ             reduce using rule 61 (expr -> ZEROS ( row ) .)
+    EQ              reduce using rule 61 (expr -> ZEROS ( row ) .)
+    ;               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    ,               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    )               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    ]               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    :               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    PRINT           reduce using rule 61 (expr -> ZEROS ( row ) .)
+    {               reduce using rule 61 (expr -> ZEROS ( row ) .)
+    ID              reduce using rule 61 (expr -> ZEROS ( row ) .)
+    IF              reduce using rule 61 (expr -> ZEROS ( row ) .)
+    WHILE           reduce using rule 61 (expr -> ZEROS ( row ) .)
+    FOR             reduce using rule 61 (expr -> ZEROS ( row ) .)
+    BREAK           reduce using rule 61 (expr -> ZEROS ( row ) .)
+    CONTINUE        reduce using rule 61 (expr -> ZEROS ( row ) .)
+    RETURN          reduce using rule 61 (expr -> ZEROS ( row ) .)
 
 
 state 122
 
-    (62) expr -> ONES ( expr ) .
+    (62) expr -> ONES ( row ) .
 
-    '               reduce using rule 62 (expr -> ONES ( expr ) .)
-    +               reduce using rule 62 (expr -> ONES ( expr ) .)
-    -               reduce using rule 62 (expr -> ONES ( expr ) .)
-    *               reduce using rule 62 (expr -> ONES ( expr ) .)
-    /               reduce using rule 62 (expr -> ONES ( expr ) .)
-    DOTADD          reduce using rule 62 (expr -> ONES ( expr ) .)
-    DOTSUB          reduce using rule 62 (expr -> ONES ( expr ) .)
-    DOTMUL          reduce using rule 62 (expr -> ONES ( expr ) .)
-    DOTDIV          reduce using rule 62 (expr -> ONES ( expr ) .)
-    LT              reduce using rule 62 (expr -> ONES ( expr ) .)
-    GT              reduce using rule 62 (expr -> ONES ( expr ) .)
-    LE              reduce using rule 62 (expr -> ONES ( expr ) .)
-    GE              reduce using rule 62 (expr -> ONES ( expr ) .)
-    NEQ             reduce using rule 62 (expr -> ONES ( expr ) .)
-    EQ              reduce using rule 62 (expr -> ONES ( expr ) .)
-    ;               reduce using rule 62 (expr -> ONES ( expr ) .)
-    ,               reduce using rule 62 (expr -> ONES ( expr ) .)
-    )               reduce using rule 62 (expr -> ONES ( expr ) .)
-    ]               reduce using rule 62 (expr -> ONES ( expr ) .)
-    :               reduce using rule 62 (expr -> ONES ( expr ) .)
-    PRINT           reduce using rule 62 (expr -> ONES ( expr ) .)
-    {               reduce using rule 62 (expr -> ONES ( expr ) .)
-    ID              reduce using rule 62 (expr -> ONES ( expr ) .)
-    IF              reduce using rule 62 (expr -> ONES ( expr ) .)
-    WHILE           reduce using rule 62 (expr -> ONES ( expr ) .)
-    FOR             reduce using rule 62 (expr -> ONES ( expr ) .)
-    BREAK           reduce using rule 62 (expr -> ONES ( expr ) .)
-    CONTINUE        reduce using rule 62 (expr -> ONES ( expr ) .)
-    RETURN          reduce using rule 62 (expr -> ONES ( expr ) .)
+    '               reduce using rule 62 (expr -> ONES ( row ) .)
+    +               reduce using rule 62 (expr -> ONES ( row ) .)
+    -               reduce using rule 62 (expr -> ONES ( row ) .)
+    *               reduce using rule 62 (expr -> ONES ( row ) .)
+    /               reduce using rule 62 (expr -> ONES ( row ) .)
+    DOTADD          reduce using rule 62 (expr -> ONES ( row ) .)
+    DOTSUB          reduce using rule 62 (expr -> ONES ( row ) .)
+    DOTMUL          reduce using rule 62 (expr -> ONES ( row ) .)
+    DOTDIV          reduce using rule 62 (expr -> ONES ( row ) .)
+    LT              reduce using rule 62 (expr -> ONES ( row ) .)
+    GT              reduce using rule 62 (expr -> ONES ( row ) .)
+    LE              reduce using rule 62 (expr -> ONES ( row ) .)
+    GE              reduce using rule 62 (expr -> ONES ( row ) .)
+    NEQ             reduce using rule 62 (expr -> ONES ( row ) .)
+    EQ              reduce using rule 62 (expr -> ONES ( row ) .)
+    ;               reduce using rule 62 (expr -> ONES ( row ) .)
+    ,               reduce using rule 62 (expr -> ONES ( row ) .)
+    )               reduce using rule 62 (expr -> ONES ( row ) .)
+    ]               reduce using rule 62 (expr -> ONES ( row ) .)
+    :               reduce using rule 62 (expr -> ONES ( row ) .)
+    PRINT           reduce using rule 62 (expr -> ONES ( row ) .)
+    {               reduce using rule 62 (expr -> ONES ( row ) .)
+    ID              reduce using rule 62 (expr -> ONES ( row ) .)
+    IF              reduce using rule 62 (expr -> ONES ( row ) .)
+    WHILE           reduce using rule 62 (expr -> ONES ( row ) .)
+    FOR             reduce using rule 62 (expr -> ONES ( row ) .)
+    BREAK           reduce using rule 62 (expr -> ONES ( row ) .)
+    CONTINUE        reduce using rule 62 (expr -> ONES ( row ) .)
+    RETURN          reduce using rule 62 (expr -> ONES ( row ) .)
 
 
 state 123

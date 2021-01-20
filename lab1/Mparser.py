@@ -103,7 +103,7 @@ def p_continue_instruction(p):
 
 def p_return_instruction(p):
     """return : RETURN expr ';'"""
-    p[0] = Continue()
+    p[0] = Return(p[2])
     p[0].lineno = p.lineno(1)
 
 
@@ -233,9 +233,9 @@ def p_expr_id(p):
 
 
 def p_matrix(p):
-    """expr : EYE '(' expr ')'
-              | ZEROS '(' expr ')'
-              | ONES '(' expr ')'
+    """expr : EYE '(' row ')'
+              | ZEROS '(' row ')'
+              | ONES '(' row ')'
               | vector
     """  
     if len(p) == 5:
