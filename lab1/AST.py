@@ -133,7 +133,7 @@ class FloatNum(Node):
 
 class String(Node):
     def __init__(self, value):
-        self.value = value
+        self.value = value.strip("\"")
         self.type = "STRING"
 
 class Variable(Node):

@@ -86,7 +86,12 @@ class Interpreter(object):
             variable = ref_dict['variable']
             ids = ref_dict['row']
             if(len(ids) == 1):
-                pass
+                if not isinstance(ids[0], range):
+                    variable[ids[0]] = [right for i in variable[ids[0]]]
+                else:
+                    for i in ids[0]:
+                        variable[i] = [right for i in variable[i]]
+
             if(len(ids) == 2):
                 if not isinstance(ids[0], range) and not isinstance(ids[1], range):
                     variable[ids[0]][ids[1]] = right
